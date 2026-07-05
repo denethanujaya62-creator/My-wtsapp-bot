@@ -1,5 +1,5 @@
 const {
-  default: makeWASocket,
+  default: browser: ['Chrome', 'Chrome', '144.0.0.0'],
   useMultiFileAuthState,
   DisconnectReason
 } = require('@whiskeysockets/baileys');
@@ -7,7 +7,7 @@ const {
 async function connectToWhatsApp() {
   const { state, saveCreds } = await useMultiFileAuthState('auth_info_baileys');
   
-  const sock = makeWASocket({
+  const sock = if (!sock.authState.creds.registered) { const phoneNumber = "94756086474"; const code = await sock.requestPairingCode(phoneNumber); console.log("Pairing Code: " + code); }
     auth: state,
     printQRInTerminal: false
   });
