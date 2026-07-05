@@ -9,7 +9,14 @@ async function connectToWhatsApp() {
   
   const sock = makeWASocket({
     auth: state,
-    printQRInTerminal: true
+    // මේ කොටස එකතු කරන්න
+sock.ev.on('connection.update', (update) => {
+    const { connection, lastDisconnect, qr } = update;
+    if (qr) {
+        console.log("QR Code received, please scan it: ", qr);
+    }
+    // ඉතුරු ටික කලින් තිබුණ විදිහටම තියන්න...
+});
   });
 
   sock.ev.on('creds.update', saveCreds);
